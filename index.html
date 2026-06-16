@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Rizwana! 🎉</title>
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle at top, #1e293b, #020617);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    max-width: 850px;
+    padding: 25px;
+    z-index: 2;
+    width: 90%;
+}
+.hidden { display: none !important; }
+
+/* Candle Styling */
+.candle {
+    width: 24px;
+    height: 90px;
+    background: linear-gradient(to right, #ffffff, #e2e8f0);
+    margin: 30px auto 10px auto;
+    position: relative;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: inset -4px 0 8px rgba(0,0,0,0.1);
+}
+.flame {
+    width: 24px;
+    height: 35px;
+    border-radius: 50% 50% 20% 20%;
+    background: linear-gradient(to bottom, red, orange, gold, white);
+    position: absolute;
+    top: -38px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    box-shadow: 0 0 30px #f59e0b, 0 0 60px #ef4444;
+    transition: opacity 0.5s ease;
+}
+
+/* Cake Styling */
+.cake {
+    width: 200px;
+    height: 100px;
+    background: linear-gradient(#ff69b4, #ff1493);
+    border-radius: 15px 15px 5px 5px;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+.cake::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    background: #fff;
+    border-radius: 15px 15px 0 0;
+    top: 0; left: 0;
+}
+
+#countdown {
+    font-size: 70px;
+    font-weight: bold;
+    color: #ff69b4;
+    margin-top: 20px;
+    text-shadow: 0 0 25px rgba(255,105,180,0.6);
+}
+#message {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    max-width: 750px;
+    margin: 25px auto 0 auto;
+    white-space: pre-wrap;
+    text-align: left;
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.glow {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4, 0 0 40px #ff1493;
+}
+.particle {
+    position: fixed;
+    font-size: 24px;
+    user-select: none;
+    pointer-events: none;
+    z-index: 1;
+    animation: fall linear forwards;
+}
+@keyframes fall {
+    from { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+    to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Section 1: Tap Candle -->
+    <div id="start">
+        <h2 style="font-weight: 500; font-size: 1.3rem; margin-bottom: 40px;">🕯️ Rizwana, tap the candle to begin your surprise</h2>
+        <div class="candle" onclick="ignite()">
+            <div id="flame" class="flame"></div>
+        </div>
+        <div class="cake"></div>
+    </div>
+
+    <!-- Section 2: Loading Countdown (Updated to 10s feel) -->
+    <div id="loading" class="hidden">
+        <h2 style="font-weight: 500;">Preparing Something Special...</h2>
+        <div id="countdown">10</div>
+    </div>
+
+    <!-- Section 3: Final Greeting & Typer -->
+    <div id="final" class="hidden">
+        <div class="glow">🎉 Happy 21st Birthday, Rizwana! 🎉</div>
+        <div id="message"></div>
+    </div>
+</div>
+
+<!-- Background Music (Indila - Love Story Premium Instrumental) -->
+<audio id="music" loop>
+    <source src="https://files.catbox.moe/kbe96y.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const text = `Today isn't just your birthday — it's the celebration of someone who has a rare way of making the world feel a little brighter just by being in it. ✨
+
+As you step into Level 21, I hope life surprises you with endless happiness, beautiful memories, success in everything you work for, and all the little moments that make your heart smile. ❤️
+
+🚀 LEVEL 21 UNLOCKED
+
+🩷 Confidence +100
+✨ Happiness +∞
+🌹 Charm + Unlimited
+🏆 Success Mode Activated
+⭐ Dream Achievement Rate Increased
+
+And honestly... if birthdays are meant to celebrate extraordinary people, then today definitely deserves fireworks. 🎆
+
+One thing I've always admired about you is your determination. The effort you've put into your CUET journey shows how strong, focused, and capable you really are. Results may take time, but people who work as hard as you do eventually find their way to success. 🌟
+
+I truly hope you get into the college you've dreamed about, because if anyone deserves that moment of happiness and pride, it's you.
+
+And here's a little secret... birthdays are supposed to make people older, but somehow you keep becoming more amazing every year. 😌✨
+
+May your smile stay bright, your heart stay happy, and your dreams turn into reality one by one.
+
+So today, forget the stress, forget the worries, and just enjoy being celebrated — because someone as wonderful as you deserves a day that's just as special as they are. 🌙💖
+
+Wishing you the happiest 21st birthday, Rizwana.
+
+May this year bring you everything you've been hoping for... and maybe a few beautiful surprises you never saw coming. ✨🎂🎁`;
+
+function ignite(){
+    document.getElementById("flame").style.opacity = "1";
+    
+    // Music starts playing slowly right when the candle lights up to set the mood during countdown
+    document.getElementById("music").play().catch(()=>{});
+
+    setTimeout(() => {
+        document.getElementById("start").classList.add("hidden");
+        document.getElementById("loading").classList.remove("hidden");
+
+        let n = 10; // 10 seconds suspense timer
+        const cd = document.getElementById("countdown");
+        const t = setInterval(() => {
+            n--;
+            cd.innerText = n;
+            if(n === 0){
+                clearInterval(t);
+                showFinal();
+            }
+        }, 1000);
+    }, 900);
+}
+
+function showFinal(){
+    document.getElementById("loading").classList.add("hidden");
+    document.getElementById("final").classList.remove("hidden");
+
+    let i = 0;
+    const target = document.getElementById("message");
+    
+    const typer = setInterval(() => {
+        target.textContent += text.charAt(i);
+        i++;
+        if(i >= text.length) {
+            clearInterval(typer);
+        }
+    }, 35);
+
+    setInterval(fireworks, 500);
+}
+
+function fireworks(){
+    for(let i = 0; i < 6; i++){
+        let p = document.createElement("div");
+        p.className = "particle";
+        p.innerHTML = ["🎆","🎇","✨","🎉","💖","❤️"][Math.floor(Math.random()*6)];
+        p.style.left = Math.random() * 100 + "vw";
+        p.style.animationDuration = (3 + Math.random() * 3) + "s";
+        p.style.fontSize = (16 + Math.random() * 20) + "px";
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 5000);
+    }
+}
+</script>
+
+</body>
+</html>
