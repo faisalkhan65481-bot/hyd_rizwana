@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Rizwana! 🎉</title>
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-y: auto; /* Scroll enabled kiya */
+    background: radial-gradient(circle at top, #1e293b, #020617);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+.container {
+    max-width: 700px;
+    padding: 20px;
+    z-index: 2;
+    width: 90%;
+    margin: auto;
+}
+.hidden { display: none !important; }
+
+/* Candle Styling */
+.candle {
+    width: 24px;
+    height: 90px;
+    background: linear-gradient(to right, #ffffff, #e2e8f0);
+    margin: 30px auto 10px auto;
+    position: relative;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: inset -4px 0 8px rgba(0,0,0,0.1);
+}
+.flame {
+    width: 24px;
+    height: 35px;
+    border-radius: 50% 50% 20% 20%;
+    background: linear-gradient(to bottom, red, orange, gold, white);
+    position: absolute;
+    top: -38px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    box-shadow: 0 0 30px #f59e0b, 0 0 60px #ef4444;
+    transition: opacity 0.5s ease;
+}
+
+/* Cake Styling */
+.cake {
+    width: 200px;
+    height: 100px;
+    background: linear-gradient(#ff69b4, #ff1493);
+    border-radius: 15px 15px 5px 5px;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+.cake::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    background: #fff;
+    border-radius: 15px 15px 0 0;
+    top: 0; left: 0;
+}
+
+#countdown {
+    font-size: 80px;
+    font-weight: bold;
+    color: #ff69b4;
+    margin-top: 20px;
+    text-shadow: 0 0 25px rgba(255,105,180,0.6);
+}
+
+/* Premium Card Box Styling */
+.message-card {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 35px 30px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4), inset 0 0 15px rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin-top: 30px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Custom Text Highlights */
+.glow {
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4, 0 0 40px #ff1493;
+    margin-bottom: 10px;
+}
+.highlight-pink { color: #ff477e; font-weight: bold; }
+.highlight-blue { color: #00f5d4; font-weight: bold; }
+.highlight-gold { color: #ffb703; font-weight: bold; }
+
+/* Stats Display Box */
+.level-box {
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 4px solid #ff477e;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+.stat-item {
+    font-weight: bold;
+    margin: 8px 0;
+    font-size: 1.15rem;
+}
+
+.particle {
+    position: fixed;
+    font-size: 24px;
+    user-select: none;
+    pointer-events: none;
+    z-index: 1;
+    animation: fall linear forwards;
+}
+@keyframes fall {
+    from { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+    to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Section 1: Tap Candle -->
+    <div id="start">
+        <h2 style="font-weight: 500; font-size: 1.3rem; margin-bottom: 40px; color: #cbd5e1;">🕯️ Rizwana, tap the candle to begin your surprise</h2>
+        <div class="candle" onclick="ignite()">
+            <div id="flame" class="flame"></div>
+        </div>
+        <div class="cake"></div>
+    </div>
+
+    <!-- Section 2: Loading Countdown (10s) -->
+    <div id="loading" class="hidden">
+        <h2 style="font-weight: 500; color: #cbd5e1;">Preparing Something Special...</h2>
+        <div id="countdown">10</div>
+    </div>
+
+    <!-- Section 3: Final Greeting & Beautiful Text Card -->
+    <div id="final" class="hidden">
+        <div class="glow">🎉 Happy 21st Birthday, Rizwana! 🎉</div>
+        
+        <div class="message-card">
+            <p>Today isn't just your birthday — it's the celebration of someone who has a rare way of making the world feel a little brighter just by being in it. ✨</p>
+
+            <p>As you step into <span class="highlight-pink">Level 21</span>, I hope life surprises you with endless happiness, beautiful memories, success in everything you work for, and all the little moments that make your heart smile. ❤️</p>
+
+            <div class="level-box">
+                <div style="color: #00f5d4; font-weight: bold; margin-bottom: 10px; letter-spacing: 1px;">🚀 LEVEL 21 UNLOCKED</div>
+                <div class="stat-item" style="color: #ff758c;">🩷 Confidence +100</div>
+                <div class="stat-item" style="color: #00f5d4;">✨ Happiness +∞</div>
+                <div class="stat-item" style="color: #ffb703;">🌹 Charm + Unlimited</div>
+                <div class="stat-item" style="color: #9b5de5;">🏆 Success Mode Activated</div>
+                <div class="stat-item" style="color: #f15bb5;">⭐ Dream Achievement Rate Increased</div>
+            </div>
+
+            <p>And honestly... if birthdays are meant to celebrate extraordinary people, then today definitely deserves fireworks. 🎆</p>
+
+            <p>One thing I've always admired about you is your <span class="highlight-gold">determination</span>. The effort you've put into your <span class="highlight-blue">CUET journey</span> shows how strong, focused, and capable you really are. Results may take time, but people who work as hard as you do eventually find their way to success. 🌟</p>
+
+            <p>I truly hope you get into the college you've dreamed about, because if anyone deserves that moment of happiness and pride, it's you.</p>
+
+            <p>And here's a little secret... birthdays are supposed to make people older, but somehow <span class="highlight-pink">you keep becoming more amazing every year. 😌✨</span></p>
+
+            <p>May your smile stay bright, your heart stay happy, and your dreams turn into reality one by one.</p>
+
+            <p>So today, forget the stress, forget the worries, and just enjoy being celebrated — because someone as wonderful as you deserves a day that's just as special as they are. 🌙💖</p>
+
+            <p class="highlight-pink" style="font-size: 1.3rem; text-align: center; margin-top: 30px; font-weight: bold; text-shadow: 0 0 10px rgba(255,71,126,0.3);">Wishing you the happiest 21st birthday, Rizwana.</p>
+
+            <p style="text-align: center; font-weight: 500; color: #00f5d4; margin-bottom: 0;">May this year bring you everything you've been hoping for... and maybe a few beautiful surprises you never saw coming. ✨🎂🎁</p>
+        </div>
+    </div>
+</div>
+
+<!-- Premium High-Speed Direct Link for Indila - Love Story Instrumental -->
+<audio id="music" loop preload="auto">
+    <source src="https://files.catbox.moe/kbe96y.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function ignite(){
+    document.getElementById("flame").style.opacity = "1";
+    
+    // Forced audio play starts immediately on candle click
+    const audio = document.getElementById("music");
+    audio.play().catch(error => {
+        console.log("Audio blocked by browser auto-play policy:", error);
+    });
+
+    setTimeout(() => {
+        document.getElementById("start").classList.add("hidden");
+        document.getElementById("loading").classList.remove("hidden");
+
+        let n = 10;
+        const cd = document.getElementById("countdown");
+        const t = setInterval(() => {
+            n--;
+            cd.innerText = n;
+            if(n === 0){
+                clearInterval(t);
+                showFinal();
+            }
+        }, 1000);
+    }, 900);
+}
+
+function showFinal(){
+    document.getElementById("loading").classList.add("hidden");
+    document.getElementById("final").classList.remove("hidden");
+    setInterval(fireworks, 500);
+}
+
+function fireworks(){
+    for(let i = 0; i < 6; i++){
+        let p = document.createElement("div");
+        p.className = "particle";
+        p.innerHTML = ["🎆","🎇","✨","🎉","💖","❤️"][Math.floor(Math.random()*6)];
+        p.style.left = Math.random() * 100 + "vw";
+        p.style.animationDuration = (3 + Math.random() * 3) + "s";
+        p.style.fontSize = (16 + Math.random() * 20) + "px";
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 5000);
+    }
+}
+</script>
+
+</body>
+</html>
